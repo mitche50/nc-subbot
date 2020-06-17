@@ -1,0 +1,13 @@
+[Unit]
+Description=The Nano Center Subscription Management Discord Bot
+After=network.target
+
+[Service]
+User={YOUR USERNAME}
+Group={YOUR GROUP}
+WorkingDirectory=/home/{YOUR USERNAME}/nc-subbot
+Environment="PATH=/home/{YOUR USERNAME}/nc-subbot/venv/bin"
+ExecStart=/home/{YOUR USERNAME}/nc-subbot/venv/bin/python /home/{YOUR USERNAME}/nc-subbot/main.py
+
+[Install]
+WantedBy=multi-user.target

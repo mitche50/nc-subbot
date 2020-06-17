@@ -1,0 +1,7 @@
+python-dotenv
+discord.py
+aioredis
+asyncio
+pyqrcode
+pypng
+requests
