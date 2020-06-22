@@ -5,3 +5,4 @@ asyncio
 pyqrcode
 pypng
 requests
+paho-mqtt

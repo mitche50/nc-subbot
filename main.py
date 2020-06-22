@@ -72,7 +72,7 @@ async def send_status_message(user: discord.User, subscription_json: dict):
     qr_amount = str(int(Decimal(os.getenv('AMOUNT')) * Decimal(1000000000000000000000000000000)))
     uri_string = f"nano:{subscription_json['payment_address']}?amount={qr_amount}"
     qr = pyqrcode.create(uri_string)
-    qr.png(f'qr/{user}.png', scale=4, background='#23272A', module_color="#ffffff")
+    qr.png(f'qr/{user}.png', scale=4, module_color="#23272A")
 
     await manage_roles(user.id, subscription_json)
     embed = discord.Embed(title="Subscription Information", color=0x4169dd)
@@ -122,6 +122,8 @@ async def status(ctx):
 
         if subscription_id is None:
             subscription_json = await create_subscription(user, redis)
+            # There is no active indicator returned on a create user call - add it here to prevent issues.
+            subscription_json['active'] = False
         else:
             subscription_json = verify_subscription(subscription_id)
 
