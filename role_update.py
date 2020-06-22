@@ -49,13 +49,13 @@ async def on_ready():
     redis = await RedisDB.create()
     guild = client.get_guild(int(os.getenv('GUILD_ID')))
     member_list = guild.members
-    print(f"{datetime.now()}: {member_list}")
     for member in member_list:
         subscription_id = await get_subscription_id(member, redis)
         if subscription_id is not None:
             subscription_json = verify_subscription(subscription_id)
-            print(f"{datetime.now()}: {subscription_json}")
             await manage_roles(member.id, subscription_json)
+        else:
+            await manage_roles(member.id, {'active':False})
     await redis.close()
     await client.close()
 
