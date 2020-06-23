@@ -27,8 +27,24 @@ def on_message(client, userdata, msg):
     try:
         print(msg.payload)
         info = json.loads(msg.payload)
-        print(info['subscriber_id'])
-        # print('r = requests.put("https://discord.com/api/guilds/{guild.id}/members/{user.id}/roles/{role.id}"')
+        if info['status'] == 'active':
+            r = requests.put(
+                f"https://discord.com/api/guilds/{os.getenv('GUILD_ID')}/members/{info['subscriber_id']}/roles/{os.getenv('ROLE_ID')}", 
+                headers={'Authorization': f'Bot {os.getenv("TOKEN")}'}
+            )
+            message_content = {'content': 'Your role has been added successfully!  Thank you for your donation.'}
+            m = requests.post(
+                f"https://discord.com/api/users/@me/channels",
+                headers={'Authorization': f'Bot {os.getenv("TOKEN")}'},
+                json={'recipient_id': f'{info["subscriber_id"]}'}
+            )
+            channel_response = json.loads(m.text)
+            m = requests.post (
+                f"https://discord.com/api/channels/{channel_response['id']}/messages",
+                headers={'Authorization': f'Bot {os.getenv("TOKEN")}'},
+                json=message_content
+            )
+                
     except Exception as e:
         print(e)
     
