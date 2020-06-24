@@ -1,17 +1,23 @@
 # Prefix for commands
 PREFIX=!
 
-# Discord Token
-TOKEN=
-
-# Nano Repeat Details
-NR_TOKEN=
-API_ENDPOINT=https://api.nanorepeat.com/
-
 # Nano Subscription Details
-AMOUNT=
-PERIOD=
+AMOUNT= # How much Nano the subscription will cost
+PERIOD= # What period of time (in days) the subscription will last
+
+# Nano Repeat Info
+NR_TOKEN= # Your bearer token from Nano Repeat.  Can be found on the account page at https://nanorepeat.com/
+API_ENDPOINT=https://api.nanorepeat.com/
+MERCHANT_ID= # This is your user ID provided when you create your subscription in Nano Repeat.  Can be found through the API.
 
 # Discord Info
+TOKEN= # Fill in the token from your bot here
 GUILD_ID= # Guild = Server - copy the ID of the server you are running this bot in
-ROLE_NAME= # The exact name of the role you're using to indicate membership.  Wrap multi-word roles in quotes.
+ROLE_ID= # The numerical ID of the role you need to assign.  Get this from right clicking the role and clicking "Copy ID"
+BOT_ID= # The numerical ID of your bot.  Used to ignore messages from the bot.
+
+# MQTT Info
+MQTT_LOGIN=
+MQTT_PW=
+MQTT_PORT=
+MQTT_HOST=

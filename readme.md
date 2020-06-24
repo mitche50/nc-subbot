@@ -1,6 +1,10 @@
 The Nano Center Subscription Bot will manage discord roles and perks for contributing members to The Nano Center.
 The amount and length of the subscription are configurable in the .env file
 
+### Nano Repeat
+This bot uses Nano Repeat as a service to monitor and verify subscriptions.  There are 2 functions used within the code to handle the entirety of a nano subscription, the `create_subscription` and `verify_subscription` functions located in the `main.py` and `role_update.py` files.  
+`mqtt.py` uses MQTT to get real time updates from the system so it can inform users their subscription is active as soon as they pay.
+
 ### Initial Dependencies
 Your system must have the below dependencies installed to run:
 - Python 3.6+
