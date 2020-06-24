@@ -1,1 +1,1 @@
-* 13 * * * /home/{YOUR USERNAME}/nc-subbot/venv/bin/python /home/{YOUR USERNAME}/nc-subbot/role_update.py >> /home/{YOUR USERNAME}/nc-subbot/log/cronlog.log 2>&1
+0 13 * * * /home/{YOUR USERNAME}/nc-subbot/venv/bin/python /home/{YOUR USERNAME}/nc-subbot/role_update.py >> /home/{YOUR USERNAME}/nc-subbot/log/cronlog.log 2>&1
