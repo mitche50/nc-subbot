@@ -58,7 +58,7 @@ async def manage_roles(user_id: int, username: str, roles: list, subscription_js
         expiration_date = datetime.strptime(expiration_date, '%Y-%m-%d %H:%M:%S.%f')
         now = datetime.now()
         comp = timedelta(days=1)
-        if (expiration_date - now) > comp:
+        if (expiration_date - now) < comp:
             print(f"{datetime.now()}: User {username}'s subscription is expiring tomorrow - sending reminder.")
             content = 'Oh no, your subscription for The Nano Center is going to expire tomorrow!  Send a !renew command to get information on how to renew.'
             await send_alert(user_id, content)
